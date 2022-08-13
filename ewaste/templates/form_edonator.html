@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <!-- Fengyuan Chen's Datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css"
+        integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"
+        integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+        
+</head>
+
+<body>
+    <h2 class="text-center">------------</h2>
+    <form class="needs-validation" novalidate="" method="post" action="/form_edonator">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                    Valid Name is required.
+                </div>
+            </div>
+
+
+            <div class="col-12">
+                <label for="Contact_no" class="form-label">Conact Number</label>
+                <div class="input-group has-validation">
+                    <input type="phone" class="form-control" name="Contact_no" id="Contact_no" placeholder="Contact_no"
+                        required="">
+                    <div class="invalid-feedback">
+                        Your contact number is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="email" class="form-label">Email <span class="text-muted"></span></label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                    Please enter a valid email address
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St"
+                    required="">
+                <div class="invalid-feedback">
+                    Please enter your address.
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="e_img" class="form-label">Upload image</label>
+                <div class="col-md-6 mb-4">
+
+
+                    <div class="file-field">
+                        <div class="d-flex justify-content-center">
+                            <div class="btn btn-mdb-color btn-rounded float-left">
+                                <span>Choose file</span>
+                                <input type="file" name="e_img" id="e_img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+
+                    </div>
+                    <div lass="col-12">
+                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                            <label for="date_time" class="form-label">Choose date and time for pick-up </label>
+                            <input id="datepicker">
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(function () {
+                        $("#datepicker").datepicker();
+                    });
+                </script>
+            </div>
+        </div>
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+    </form>
+
+</body>
+
+</html>
+
+{%endblock body%}
